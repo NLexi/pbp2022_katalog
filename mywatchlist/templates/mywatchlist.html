@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+  {% block content %}
+  <style>
+    table {
+      margin-top: 25px;
+    }
+    table, th, td {
+      text-align: left;
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+  <h1>Assignment 3 PBP/PBD</h1>
+  <h5>Name :</h5>
+  <p>{{name}}</p>
+
+  <table>
+    <tr>
+      <th>Watched</th>
+      <th>Title</th>
+      <th>Rating</th>
+      <th>Release Date</th>
+      <th>Review</th>
+    </tr>
+    {% for item in list_item %}
+    <tr>
+      <td>{{item.watched}}</td>
+      <td>{{item.title}}</td>
+      <td>{{item.rating}}</td>
+      <td>{{item.release_date}}</td>
+      <td>{{item.review}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endblock content %}

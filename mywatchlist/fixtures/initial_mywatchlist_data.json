@@ -1,0 +1,123 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk" : 1,
+        "fields" : {
+            "watched" : true,
+            "title" : "Avengers",
+            "rating" : 4,
+            "release_date" : "4 May 2012",
+            "review" : "very good but generic plot"
+        }
+    },
+    {
+        "model" : "mywatchlist.mywatchlist",
+        "pk" : 2,
+        "fields" : {
+            "watched" : true,
+            "title" : "Arcane",
+            "rating" : 5,
+            "release_date" : "6 November 2021",
+            "review" : "amazing animation with attention-grabbing plot"
+        }
+    },
+    {
+        "model" : "mywatchlist.mywatchlist",
+        "pk" : 3,
+        "fields" : {
+            "watched" : false,
+            "title" : "Silence",
+            "rating" : 4,
+            "release_date" : "23 December 2016",
+            "review" : "touches on some sensitive topics but overall great"
+        }
+    },
+    {
+        "model" : "mywatchlist.mywatchlist",
+        "pk" : 4,
+        "fields" : {
+            "watched" : false,
+            "title" : "Taxi Driver",
+            "rating" : 5,
+            "release_date" : "8 February 1976",
+            "review" : "a film that doesn't shy away from violence when it is needed"
+        }
+    },
+    {
+        "model" : "mywatchlist.mywatchlist",
+        "pk" : 5,
+        "fields" : {
+            "watched" : true,
+            "title" : "Joker",
+            "rating" : 5,
+            "release_date" : "2 October 2019",
+            "review" : "a story about a man falling into insanity that is executed excellenty"
+        }
+    },
+    {
+        "model" : "mywatchlist.mywatchlist",
+        "pk" : 6,
+        "fields" : {
+            "watched" : false,
+            "title" : "The Room",
+            "rating" : 1,
+            "release_date" : "27 June 2003",
+            "review" : "horrible acting and dialogue"
+        }
+    },
+    {
+        "model" : "mywatchlist.mywatchlist",
+        "pk" : 7,
+        "fields" : {
+            "watched" : false,
+            "title" : "Catch Me If You Can",
+            "rating" : 4,
+            "release_date" : "25 December 2002",
+            "review" : "an amazing film based on a true story"
+        }
+    },
+    {
+        "model" : "mywatchlist.mywatchlist",
+        "pk" : 8,
+        "fields" : {
+            "watched" : true,
+            "title" : "Now You See Me",
+            "rating" : 4,
+            "release_date" : "31 May 2013",
+            "review" : "A fun movie about magic tricks but there are some questionable scenes"
+        }
+    },
+    {
+        "model" : "mywatchlist.mywatchlist",
+        "pk" : 9,
+        "fields" : {
+            "watched" : true,
+            "title" : "Jurrasic World",
+            "rating" : 3,
+            "release_date" : "10 June 2015",
+            "review" : "Just a generic action film with dinosaurs in it"
+        }
+    },
+    {
+        "model" : "mywatchlist.mywatchlist",
+        "pk" : 10,
+        "fields" : {
+            "watched" : false,
+            "title" : "She-Hulk: Attorney at Law",
+            "rating" : 2,
+            "release_date" : "18 August 2022",
+            "review" : "A disrespect towards the original hulk film"
+        }
+    },
+    {
+        "model" : "mywatchlist.mywatchlist",
+        "pk" : 11,
+        "fields" : {
+            "watched" : true,
+            "title" : "The Dark Knight",
+            "rating" : 5,
+            "release_date" : "18 July 2008",
+            "review" : "An unmatched performance of the joker by Heath Ledger"
+        }
+    }
+]
