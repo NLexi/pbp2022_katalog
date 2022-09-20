@@ -18,4 +18,8 @@ json is used to represent objects, can't be commented, doesn't support namespace
 xml is used to describe data items, can be commented, supports namespaces, dynamic, and uses end tags.
 html is used to display data and does not carry it, static, limited tags that displays data, and the tags are predefined.
 
+### Postman
+![html](https://github.com/NLexi/pbp2022_katalog/blob/main/Images/assg3html.jpg)
+![xml](https://github.com/NLexi/pbp2022_katalog/blob/main/Images/assg3xml.jpg)
+![json](https://github.com/NLexi/pbp2022_katalog/blob/main/Images/assg3json.jpg)
 [Assignment 3](https://pbp2022-katalog.herokuapp.com/mywatchlist/html/)
