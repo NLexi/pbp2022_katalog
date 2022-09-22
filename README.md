@@ -1,7 +1,7 @@
 # Assignment 2 PBP/PBD
 
 ### Diagram
-HTTP request -> urls -> (views <-> models) -> HTTP response(html)
+![Diagram](https://github.com/NLexi/pbp2022_katalog/blob/main/Images/assg2diagram.jpg)
 
 ### Why virtual environment is needed
 because virtual environments create local environments so that each different project can have different dependencies and packages, if you don't have any virtual environments, you can only make one project without breaking system tools or other projects.
