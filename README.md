@@ -1,7 +1,7 @@
 # Assignment 2 PBP/PBD
 
 ### Diagram
-HTTP request -> urls -> (views <-> models) -> HTTP response(html)
+![Diagram](https://github.com/NLexi/pbp2022_katalog/blob/main/Images/assg2diagram.jpg)
 
 ### Why virtual environment is needed
 because virtual environments create local environments so that each different project can have different dependencies and packages, if you don't have any virtual environments, you can only make one project without breaking system tools or other projects.
@@ -19,7 +19,7 @@ xml is used to describe data items, can be commented, supports namespaces, dynam
 html is used to display data and does not carry it, static, limited tags that displays data, and the tags are predefined.
 
 ### Importance of Data Delivery
-Typically an HTTP request response cycle is the standard data delivery procedure. The browser would request HTML, style, JPG, Javascript, and the last is the data. HTML would display the data and the data would be delivered in the form of XML and JSON. Otherwise if any of this breaks down, the website would either have no display or will display no data that is given by the user.
+Typically an HTTP request response cycle is the standard data delivery procedure. The browser would request HTML, style, JPG, Javascript, and the last is the data. HTML would display the data and the data would be delivered in the form of XML and JSON. The importance of data delivery comes in when there's so much data on the website, so that it can display it in chunks based on the user's request and lighten the weight on the storage system.
 
 ### Process of completion
 Step by step process:
