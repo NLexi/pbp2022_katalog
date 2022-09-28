@@ -21,7 +21,7 @@ html is used to display data and does not carry it, static, limited tags that di
 ### Importance of Data Delivery
 Typically an HTTP request response cycle is the standard data delivery procedure. The browser would request HTML, style, JPG, Javascript, and the last is the data. HTML would display the data and the data would be delivered in the form of XML and JSON. The importance of data delivery comes in when there's so much data on the website, so that it can display it in chunks based on the user's request and lighten the weight on the storage system.
 
-### Process of completion
+### Process of Completion
 Step by step process:
 - Create a new app named `mywatchlist` in pbp2022_katalog
 - Added mymwatchlist into project django's settings and url
@@ -52,7 +52,7 @@ Yes, we can create form element manually by not using .as_table altogether or us
 ### Data Flow Process
 The flow of data from forms is first the user fills out the data, then it will be stored in the database model and it will be passed onto the html page. After that, it will be displayed for the user to see.
 
-### Process of completion
+### Process of Completion
 Step by step process:
 - Create a new application named `todolist`
 - Add `todolist` into project_django's settings and url
