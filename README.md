@@ -63,6 +63,6 @@ Step by step process:
 - Create new function in `views.py` that retrieves data from the form and redirects as soon as you submit the form
 - Add, commit, and push the code onto GitHub then deploy the app on heroku
 - Create two accounts with each having 3 tasks in the heroku app
-- Answer assignment 4's question by updating READ.ME
+- Answer assignment 4's question by updating `READ.ME`
 
 [Heroku for Assignment 4](https://pbp2022-katalog.herokuapp.com/todolist)
