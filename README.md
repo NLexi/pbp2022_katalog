@@ -23,7 +23,7 @@ Typically an HTTP request response cycle is the standard data delivery procedure
 
 ### Process of completion
 Step by step process:
-- Create a new app named mywatchlist in pbp2022_katalog
+- Create a new app named `mywatchlist` in pbp2022_katalog
 - Added mymwatchlist into project django's settings and url
 - Created models for mywatchlist and migrate the models
 - Make a json file containing all the data and load the data
@@ -54,14 +54,13 @@ The flow of data from forms is first the user fills out the data, then it will b
 
 ### Process of completion
 Step by step process:
-- Create a new application named 'todolist'
-- Add 'todolist' into project_django's settings and url
-- Create user model using foreign key and also other models
-- makemigrations and migrate the model
+- Create a new application named `todolist`
+- Add `todolist` into project_django's settings and url
+- Create user model using foreign key and also other models then makemigrations and migrate the model
 - Implement login, register, and logout similar to lab 03
-- Create button in 'todolist.html' that redirects into 'create-task.html'
-- Create 'forms.py' that contains the form that will be used
-- Create new function in 'views.py' that retrieves data from the form and redirects as soon as you submit the form
+- Create button in `todolist.html` that redirects into `create-task.html`
+- Create `forms.py` that contains the form that will be used
+- Create new function in `views.py` that retrieves data from the form and redirects as soon as you submit the form
 - Add, commit, and push the code onto GitHub then deploy the app on heroku
 - Create two accounts with each having 3 tasks in the heroku app
 - Answer assignment 4's question by updating READ.ME
