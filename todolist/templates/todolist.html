@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    table, td, th {
+        margin-top : 10px;
+        border : 1px solid black;
+        border-collapse : collapse;
+    }
+    button {
+        width : 100px;
+        height : 22.5px;
+        border : none;
+        display: inline-block;
+        background-color : lightgray;
+        border-radius : 3px;
+        margin-bottom : 10px;
+    }
+    button:hover {
+        opacity : 70%;
+        cursor : pointer;
+    }
+    a {
+        text-decoration : none;
+        color : black;
+    }
+</style>
+<h4>Current User: {{username}}</h4>
+<button><a href="{% url 'todolist:addtask' %}">Add New Task</a></button>
+<br>
+<table>
+        <tr>
+            <th>User</th>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Description</th>
+        </tr>
+    {% for item in list_item %}
+        <tr>
+            <td>{{item.user.username}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.description}}</td>
+        </tr>
+    {% endfor %}
+</table><br>
+<button><a href="{% url 'todolist:logout' %}">Logout</a></button>   
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Add Task</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class="container">
+    
+    <h2>Add Task</h2>
+    
+        <form method="POST" action="" enctype="">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.title }}
+            </div><br>
+            <div class="form-group">
+                {{ form.description }}
+            </div><br>
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+</div>
+{% endblock content %}
