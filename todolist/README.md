@@ -23,3 +23,45 @@ Step by step process:
 - Answer assignment 4's question by updating `READ.ME`
 
 [Heroku for Assignment 4](https://pbp2022-katalog.herokuapp.com/todolist)
+
+# Assignment 5 PBP/PBD
+
+### Diffrences
+Inline CSS is styling used in the same line as the tag for example `<div style="color : black">`.
+Internal CSS is styling inside the html file, but putting all the styling in a seperate tag called `<style>`. 
+External CSS is styling done outside of the html file and calling it onto the html file.
+
+### HTML Tags
+There are many different tags in HTMl, these are some of them :
+`<div>` general section in document
+`<p>` paragraph/text
+`<h1> to <h6>` headings
+`<button` creates a button
+`<table>, <tr>, <td>, <th>` creating a table, table row, table data, and table header respectively
+`<img>` loads an image
+`<form>` creates a form
+`<input>` recieves input from the user based on the type chosen
+`<title>` defines document title
+`<li>, <ul>` defines a list and an unordered list respectively
+`<a>` contains a hyperlink
+`<nav>` defines navigation list
+`<style>` contains style section for the document
+`<body>` define document body
+`<br>` create a single-line break
+
+### CSS Selectors
+`element` selects all elements of that kind
+`.class` selects all classes that uses that name
+`:hover` does something when hovering using mouse
+`::after` inserting after content of element
+`::before` inserting before content of element
+`*` selects all elements
+
+### Process of Completion
+Step by step process:
+- Import bootstrap into `base.html` in templates folder
+- Customize the login, registration, and create-task page following bootstrap form docs 
+- Customize `todolist.html` by adding a navbar, and changing task display into cards
+- Add hover effect to the cards by using `:hover`
+- Add, commit, and push the code onto GitHub
+- Answer assignment 5's questions by updating `READ.ME`
