@@ -4,6 +4,8 @@ from todolist.views import register
 from todolist.views import login_user
 from todolist.views import logout_user
 from todolist.views import add_task
+from todolist.views import finish_task
+from todolist.views import delete_task
 
 
 app_name = 'todolist'
@@ -14,4 +16,6 @@ urlpatterns = [
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
     path('create-task/', add_task, name='addtask'),
+    path('delete_task/<int:id>', delete_task, name='delete_task_id'),
+    path('finish_task/<int:id>', finish_task, name='finish_task_id'),
 ]

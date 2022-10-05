@@ -1,48 +1,87 @@
 {% extends 'base.html' %}
 {% block content %}
 <style>
-    table, td, th {
-        margin-top : 10px;
-        border : 1px solid black;
-        border-collapse : collapse;
-    }
-    button {
-        width : 100px;
-        height : 22.5px;
+    .add-task {
+        width : 135px;
+        height : 30px;
         border : none;
         display: inline-block;
         background-color : lightgray;
         border-radius : 3px;
-        margin-bottom : 10px;
+        margin-top : 20px;
+        margin-bottom : 20px;
+        margin-left : 10px;
     }
-    button:hover {
+    .add-task:hover {
         opacity : 70%;
         cursor : pointer;
     }
     a {
         text-decoration : none;
-        color : black;
+        color : inherit;
+    }
+    a:hover {
+        color : inherit;
+    }
+    .card-body:hover {
+        cursor : pointer;
+        box-shadow : 5px 5px 10px rgba(0,0,0,0.1)
     }
 </style>
-<h4>Current User : {{username}}</h4>
-<button><a href="{% url 'todolist:addtask' %}">Add New Task</a></button>
+
+<nav class="navbar navbar-expand-lg navbar-secondary bg-secondary py-3">
+    <div class="container-fluid">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="navbar-brand" href="#">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA+UlEQVRIie3UPUoDURQF4C9prGwUFEzs1CK1pSsQrHQrupGsIgypjCLWljbaaiexMqApFRyLXGUYdXzCszIHDgOX8/OYd2eYIxO6KDANDrGZM3yCssYJOjkKigg8jsAORjEb5CiYRlj1tOsxe/zJ3E4oKOPZ+vXREjGMkpHZfXRxErMiR8EWHnx9yRs5Cpi9/wGegkXO8H+OptVrYxu72MGa2f7DHe5xgVNc4jW1dAFHGPu8Od9xjMPwNmIV1xXjLfrYQw+LwV7M+qF5119hpangPIQ32Jf29bZwEJ4SZ03ilxAtJQTXsRze53p7FaU8+MhN+dnN8bd4A5pCSXWmAdWXAAAAAElFTkSuQmCC" alt="" width="20" height="20" style="padding-bottom: 3px;">
+                    {{username}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-outline-light btn-sm" type="button"><a href="{% url 'todolist:logout' %}">Logout</a></button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<button class="add-task"><a href="{% url 'todolist:addtask' %}">Add New Task</a></button>
+
 <br>
-<table>
-        <tr>
-            <th>User</th>
-            <th>Date</th>
-            <th>Title</th>
-            <th>Description</th>
-        </tr>
-    {% for item in list_item %}
-        <tr>
-            <td>{{item.user.username}}</td>
-            <td>{{item.date}}</td>
-            <td>{{item.title}}</td>
-            <td>{{item.description}}</td>
-        </tr>
-    {% endfor %}
-</table><br>
-<button><a href="{% url 'todolist:logout' %}">Logout</a></button>   
+<div style="padding-left: 10px; padding-right: 15px;">
+    <div class="row row-cols-1 row-cols-md-5 g-4">
+        {% for item in list_item %}
+        <div class="col">
+            {% if item.is_finished %}
+            <div class="card text-white bg-success mb-3" style="width: 18rem; border-radius: 10px;">
+                <div class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <h6 class="card-subtitle mb-2">{{item.user}} - {{item.date}}</h6>
+                <p class="card-text">{{item.description}}</p>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" onclick="location.href=`{% url 'todolist:finish_task_id' item.id %}`" checked>
+                    <label class="custom-control-label" for="#">Task Status</label>
+                </div>
+                <a href="{% url 'todolist:delete_task_id' item.id %}" class="btn btn-dark">Delete</a>         
+                </div>
+            </div>
+            {% else %}
+            <div class="card text-dark bg-light border-secondary mb-3" style="width: 18rem; border-radius: 10px;">
+                <div class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{item.user}} - {{item.date}}</h6>
+                <p class="card-text">{{item.description}}</p>
+                <div class="custom-control custom-checkbox" >
+                    <input type="checkbox" class="custom-control-input" onclick="location.href=`{% url 'todolist:finish_task_id' item.id %}`">
+                    <label class="custom-control-label" for="#">Task Status</label>
+                </div>
+                <a href="{% url 'todolist:delete_task_id' item.id %}" class="btn btn-dark">Delete</a>         
+                </div>
+            </div>
+            {% endif %}
+        </div>   
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock content %}
