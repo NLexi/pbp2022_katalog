@@ -33,29 +33,29 @@ External CSS is styling done outside of the html file and calling it onto the ht
 
 ### HTML Tags
 There are many different tags in HTMl, these are some of them :
-`<div>` general section in document
-`<p>` paragraph/text
-`<h1> to <h6>` headings
-`<button` creates a button
-`<table>, <tr>, <td>, <th>` creating a table, table row, table data, and table header respectively
-`<img>` loads an image
-`<form>` creates a form
-`<input>` recieves input from the user based on the type chosen
-`<title>` defines document title
-`<li>, <ul>` defines a list and an unordered list respectively
-`<a>` contains a hyperlink
-`<nav>` defines navigation list
-`<style>` contains style section for the document
-`<body>` define document body
-`<br>` create a single-line break
+- `<div>` general section in document
+- `<p>` paragraph/text
+- `<h1> to <h6>` headings
+- `<button` creates a button
+- `<table>, <tr>, <td>, <th>` creating a table, table row, table data, and table header respectively
+- `<img>` loads an image
+- `<form>` creates a form
+- `<input>` recieves input from the user based on the type chosen
+- `<title>` defines document title
+- `<li>, <ul>` defines a list and an unordered list respectively
+- `<a>` contains a hyperlink
+- `<nav>` defines navigation list
+- `<style>` contains style section for the document
+- `<body>` define document body
+- `<br>` create a single-line break
 
 ### CSS Selectors
-`element` selects all elements of that kind
-`.class` selects all classes that uses that name
-`:hover` does something when hovering using mouse
-`::after` inserting after content of element
-`::before` inserting before content of element
-`*` selects all elements
+- `element` selects all elements of that kind
+- `.class` selects all classes that uses that name
+- `:hover` does something when hovering using mouse
+- `::after` inserting after content of element
+- `::before` inserting before content of element
+- `*` selects all elements
 
 ### Process of Completion
 Step by step process:
