@@ -62,6 +62,7 @@ Step by step process:
 - Import bootstrap into `base.html` in templates folder
 - Customize the login, registration, and create-task page following bootstrap form docs 
 - Customize `todolist.html` by adding a navbar, and changing task display into cards
+- Add container for every html page so that it is responsive
 - Add hover effect to the cards by using `:hover`
 - Add, commit, and push the code onto GitHub
 - Answer assignment 5's questions by updating `READ.ME`
