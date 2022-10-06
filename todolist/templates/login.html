@@ -5,34 +5,36 @@
 {% endblock meta %}
 
 {% block content %}
+<div style="display:flex">
+    <div style="margin:auto; justify-content: center; align-items: center; margin-top: 12%">
+        <div class = "login">
 
-<div class = "login" style="margin-top : 10px; margin-left :10px;">
+            <h1 style="padding-bottom : 10px;">Login</h1>
 
-    <h1 style="padding-bottom : 10px;">Login</h1>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="form-floating mb-3">
+                    <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
+                    <label for="floatingInput">Username</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+                <input class="btn btn-secondary" type="submit" value="Login" style="margin-top: 20px;margin-bottom: 10px;">
+            </form>
 
-    <form method="POST" action="">
-        {% csrf_token %}
-        <div class="form-floating mb-3 w-25">
-            <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
-            <label for="floatingInput">Username</label>
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}     
+                
+            Don't have an account? <a href="{% url 'todolist:register' %}">Create Account</a>
+
         </div>
-        <div class="form-floating w-25">
-            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
-        </div>
-        <input class="btn btn-secondary" type="submit" value="Login" style="margin-top: 20px;margin-bottom: 10px;">
-    </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-        
-    Don't have an account? <a href="{% url 'todolist:register' %}">Create Account</a>
-
+    </div>
 </div>
-
 {% endblock content %}
