@@ -1,5 +1,5 @@
 from cgi import test
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from django.shortcuts import render
 from .models import Task
@@ -10,7 +10,6 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -24,6 +23,11 @@ def show_todolist(request):
     'username' : username
     }
     return render(request, "todolist.html", context)
+
+@login_required(login_url="/todolist/login/")
+def show_json(request): 
+    data = Task.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 def register(request):
     form = UserCreationForm()
@@ -79,3 +83,26 @@ def delete_task(request, id):
     item = Task.objects.get(user = request.user, id=id)
     item.delete()
     return redirect('todolist:show_todolist')
+
+def add(request):
+    if request.method == "POST":
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+        task = Task.objects.create(
+            user=request.user,
+            title=title,
+            description=description,
+        )
+        return JsonResponse(
+            {
+                "pk": task.id,
+                "fields": {
+                    "user" : task.user.username,
+                    "title": task.title,
+                    "description": task.description,
+                    "is_finished": task.is_finished,
+                    "date": task.date,
+                },
+            },
+            status=200,
+        )

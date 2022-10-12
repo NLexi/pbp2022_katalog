@@ -1,5 +1,79 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<script>
+$(document).ready(function() {
+    function card(task) {
+        return `
+        <div class="col">
+            ${task.fields.is_finished ? 
+                `
+                <div class="card text-white bg-success mb-3" style="width: 18rem; border-radius: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-title">${task.fields.title}</h5>
+                        <h6 class="card-subtitle mb-2">${task.fields.date}</h6>
+                        <p class="card-text">${task.fields.description}</p>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" onclick="location.href='finish_task/${task.pk}'" checked>
+                            <label class="custom-control-label" for="#">Task Status</label>
+                        </div>
+                        <a href="delete_task/${task.pk}" class="btn btn-dark">Delete</a>         
+                    </div>
+                </div>
+                `
+                :
+                `
+                <div class="card text-dark bg-light border-secondary mb-3" style="width: 100%; border-radius: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-title">${task.fields.title}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">${task.fields.date}</h6>
+                        <p class="card-text">${task.fields.description}</p>
+                        <div class="custom-control custom-checkbox" >
+                            <input type="checkbox" class="custom-control-input" onclick="location.href='finish_task/${task.pk}'">
+                            <label class="custom-control-label" for="#">Task Status</label>
+                        </div>
+                        <a href="delete_task/${task.pk}" class="btn btn-dark">Delete</a>
+                    </div>
+                </div>
+                `
+            }
+        </div>
+        `
+    };
+    function loop() {
+        $.get("{% url 'todolist:show_json' %}", function(data) {
+            $.each(data, function(i, value) {
+                $("#container0").append(card(value));
+            });
+        });
+    };
+    $("#submitbutton").click(e => {
+      e.preventDefault();
+      const csrftoken = document.querySelector(
+        "[name=csrfmiddlewaretoken]"
+      ).value;
+      $.ajax({
+          type: "POST",
+          url: "{% url 'todolist:add' %}",
+          headers: { "X-CSRFToken": csrftoken },
+          mode: "same-origin",
+          data: {
+            title: $("#titletext").val(),
+            description: $("#descriptiontext").val(),
+          },
+          success: response => {
+            $("#modalform").trigger("reset");
+            $("#container0").prepend(card(response));
+          },
+          error: error => {
+            console.log(error);
+          },
+        });
+    });
+    loop();
+})
+</script>
+
 <style>
     .add-task {
         width : 135px;
@@ -32,6 +106,34 @@
     }
 </style>
 
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Task</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="" id="modalform">
+                {% csrf_token %} 
+                <div class="mb-3">
+                  <label for="titletext" class="form-label">Title</label>
+                  <input type="text" class="form-control" id="titletext" aria-describedby="emailHelp" name="titletext">
+                </div>
+                <div class="mb-3">
+                  <label for="descriptiontext" class="form-label">Description</label>
+                  <input type="text" class="form-control" id="descriptiontext" name="descriptiontext">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" id="submitbutton">Submit</button>
+        </div>
+      </div>
+    </div>
+</div>
+
 <nav class="navbar navbar-expand-lg navbar-secondary bg-secondary py-3">
     <div class="container-fluid">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -43,47 +145,18 @@
             </li>
             <li class="nav-item">
                 <button class="btn btn-outline-light btn-sm" type="button"><a href="{% url 'todolist:logout' %}">Logout</a></button>
-            </li>
+            </li>   
         </ul>
     </div>
 </nav>
 
-<button class="add-task"><a href="{% url 'todolist:addtask' %}">Add New Task</a></button>
+<!-- Button trigger modal -->
+<button type="button" class="add-task" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add New Task</button>
 
 <br>
 <div style="padding-left: 10px; padding-right: 15px;">
-    <div class="row row-cols-1 row-cols-md-5 g-4">
-        {% for item in list_item %}
-        <div class="col">
-            {% if item.is_finished %}
-            <div class="card text-white bg-success mb-3" style="width: 18rem; border-radius: 10px;">
-                <div class="card-body">
-                <h5 class="card-title">{{item.title}}</h5>
-                <h6 class="card-subtitle mb-2">{{item.user}} - {{item.date}}</h6>
-                <p class="card-text">{{item.description}}</p>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" onclick="location.href=`{% url 'todolist:finish_task_id' item.id %}`" checked>
-                    <label class="custom-control-label" for="#">Task Status</label>
-                </div>
-                <a href="{% url 'todolist:delete_task_id' item.id %}" class="btn btn-dark">Delete</a>         
-                </div>
-            </div>
-            {% else %}
-            <div class="card text-dark bg-light border-secondary mb-3" style="width: 100%; border-radius: 10px;">
-                <div class="card-body">
-                <h5 class="card-title">{{item.title}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{item.user}} - {{item.date}}</h6>
-                <p class="card-text">{{item.description}}</p>
-                <div class="custom-control custom-checkbox" >
-                    <input type="checkbox" class="custom-control-input" onclick="location.href=`{% url 'todolist:finish_task_id' item.id %}`">
-                    <label class="custom-control-label" for="#">Task Status</label>
-                </div>
-                <a href="{% url 'todolist:delete_task_id' item.id %}" class="btn btn-dark">Delete</a>         
-                </div>
-            </div>
-            {% endif %}
-        </div>   
-        {% endfor %}
+    <div class="row row-cols-1 row-cols-md-5 g-4" id="container0">
+
     </div>
 </div>
 
