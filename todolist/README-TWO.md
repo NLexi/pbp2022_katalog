@@ -11,7 +11,7 @@ Event-driven programming is a paradigm in which programs are executed when new e
 - Add `<script>` tag inside your html body.
 - Write ajax JQuery syntax inside your script, like `$.ajax()` to POST, DELETE, etc.
 - Ajax will listen the event listener you write in script to perform the action you want.
-- That action dan response/data will be processed asynchronously in the server.
+- That action and response/data will be processed asynchronously in the server.
 - The data will be shown in the page without needing to refresh.
 
 ### Process of Completion
